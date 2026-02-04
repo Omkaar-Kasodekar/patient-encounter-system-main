@@ -48,7 +48,7 @@ def test_create_inactive_doctor(client):
     response = client.post(
         "/doctors",
         json={
-            "full_name": "Dr Inactive",
+            "full_name": "Dr Missing",
             "specialization": "General",
             "is_active": False,
         },
