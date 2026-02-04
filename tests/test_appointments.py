@@ -70,7 +70,7 @@ def test_appointment_overlap(client):
     )
 
     assert response.status_code == 409
-    assert response.json()["detail"] == "Doctor has overlapping appointment"
+    assert response.json()["detail"] == "Doctor has a overlap"
 
 
 def test_get_appointments(client):
