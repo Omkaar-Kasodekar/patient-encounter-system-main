@@ -20,7 +20,7 @@ TestingSessionLocal = sessionmaker(
 )
 
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def client():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
