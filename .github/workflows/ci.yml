@@ -52,7 +52,7 @@ jobs:
 
       - name: Run tests with coverage
         id: tests
-        run: poetry run pytest --cov=src--cov-fail-under=80
+        run: poetry run pytest --cov=src --cov-fail-under=80
 
       # Runs only if any previous step failed
       - name: Report failure
