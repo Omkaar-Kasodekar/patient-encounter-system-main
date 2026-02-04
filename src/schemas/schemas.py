@@ -21,6 +21,7 @@ class PatientRead(PatientCreate):
 class DoctorCreate(BaseModel):
     full_name: str
     specialization: str
+    is_active: bool = True
 
 
 class DoctorRead(DoctorCreate):

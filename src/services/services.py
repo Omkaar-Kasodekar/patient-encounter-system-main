@@ -7,12 +7,22 @@ from src.models.Patient import Patient
 from src.models.Doctor import Doctor
 from src.models.Appointment import Appointment
 
+from sqlalchemy.exc import IntegrityError
+
 
 def create_patient(db: Session, patient: Patient):
-    db.add(patient)
-    db.commit()
-    db.refresh(patient)
-    return patient
+    try:
+        db.add(patient)
+        db.commit()
+        db.refresh(patient)
+        return patient
+
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail="Email already exists",
+        )
 
 
 def create_doctor(db: Session, doctor: Doctor):
