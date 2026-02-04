@@ -32,7 +32,7 @@ def create_patient_api(
     patient: PatientCreate,
     db: Session = Depends(get_db),
 ):
-    obj = Patient(**patient.dict())
+    obj = Patient(**patient.model_dump())
     return create_patient(db, obj)
 
 
@@ -41,7 +41,7 @@ def create_doctor_api(
     doctor: DoctorCreate,
     db: Session = Depends(get_db),
 ):
-    obj = Doctor(**doctor.dict())
+    obj = Doctor(**doctor.model_dump())
     return create_doctor(db, obj)
 
 
@@ -50,7 +50,7 @@ def create_appointment_api(
     appointment: AppointmentCreate,
     db: Session = Depends(get_db),
 ):
-    obj = Appointment(**appointment.dict())
+    obj = Appointment(**appointment.model_dump())
     return schedule_appointment(db, obj)
 
 

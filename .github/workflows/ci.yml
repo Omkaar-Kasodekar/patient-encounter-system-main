@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - master
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   test:
@@ -53,22 +51,4 @@ jobs:
       - name: Run tests with coverage
         id: tests
         run: poetry run pytest --cov=src --cov-fail-under=80
-
-      # Runs only if any previous step failed
-      - name: Report failure
-        if: failure()
-        run: |
-          echo "CI Pipeline failed!"
-          echo "Please check the logs above to identify the issue."
-          echo ""
-          echo "Common fixes:"
-          echo "- Linting: Run 'poetry run ruff check src/ tests/ --fix'"
-          echo "- Formatting: Run 'poetry run black src/ tests/'"
-          echo "- Tests: Run 'poetry run pytest -v' locally"
-
-      # Runs only if all steps succeeded
-      - name: Report success
-        if: success()
-        run: |
-          echo "CI Pipeline passed!"
-          echo "All checks completed successfully."
+                

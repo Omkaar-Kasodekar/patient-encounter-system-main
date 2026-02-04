@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
-from pydantic import BaseModel, EmailStr, Field, validator
+from pydantic import BaseModel, EmailStr, Field, field_validator as validator
+from pydantic import ConfigDict
 
 
 class PatientCreate(BaseModel):
@@ -14,8 +15,7 @@ class PatientRead(PatientCreate):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class DoctorCreate(BaseModel):
@@ -29,8 +29,7 @@ class DoctorRead(DoctorCreate):
     is_active: bool
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class AppointmentCreate(BaseModel):
@@ -50,5 +49,4 @@ class AppointmentRead(AppointmentCreate):
     id: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
