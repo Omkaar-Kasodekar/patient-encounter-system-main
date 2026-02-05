@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from src.main import app
 from src.database import Base, get_db
 
-TEST_DATABASE_URL = "sqlite:///./test.db"
+TEST_DATABASE_URL = "sqlite:///./test1.db"
 
 engine = create_engine(
     TEST_DATABASE_URL,
